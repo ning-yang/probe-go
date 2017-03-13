@@ -21,7 +21,7 @@ func main() {
 		}
 
 		fmt.Println(time.Now(), ":", hostname)
-		time.Sleep(time.Second)
+		time.Sleep(500 * time.Millisecond)
 	}
 }
 
