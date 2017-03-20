@@ -13,6 +13,7 @@ var addr = flag.String("addr", "127.0.0.1:1818", "remote ip address + port")
 
 func main() {
 	flag.Parse()
+	var curHost string
 	for {
 		hostname, err := getRemoteHostNameThroughTCP(addr)
 
@@ -20,8 +21,11 @@ func main() {
 			fmt.Println(err)
 		}
 
-		fmt.Println(time.Now(), ":", hostname)
-		time.Sleep(500 * time.Millisecond)
+		if curHost != hostname {
+			fmt.Println(time.Now(), ":", hostname)
+			curHost = hostname
+		}
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 
